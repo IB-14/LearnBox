@@ -17,6 +17,10 @@ import * as Yup from "yup";
 import swal from '@sweetalert/with-react';
 import { Link } from 'react-router-dom';
 
+import { AUTH } from '../../constants/actions';
+import {useDispatch} from 'react-redux'
+import { useHistory } from 'react-router-dom';
+
 const InputText = ({ label, ...props }) => {
     const [field, meta] = useField(props);
      return (
@@ -54,13 +58,15 @@ const initialValues= {
 
 
 const StudentLogin = (props) => {
+    const dispatch=useDispatch();
+    const history = useHistory();
+    const axios=require("axios");
 
     const [vantaEffect, setVantaEffect] = useState(0)
     const myRef = useRef(null)
 
     const [show, setVisibility]= useState(false);
-     const [submit, isSubmitting]= useState(false);
-    //  const history = useHistory();
+    const [submit, isSubmitting]= useState(false);
 
      const handleClick = () => {
         setVisibility(!show)
@@ -71,15 +77,27 @@ const StudentLogin = (props) => {
 
      const onSubmit= (values) => {
         clickedSubmit(true);
-       setTimeout(() => {
-           swal("Login Successful", "Redirecting you to your account...", "success", {
-               button: false
-           });
-           clickedSubmit(false);
-       }, 500);
-       setTimeout(() => {
-           swal.close()
-       },2000);
+        axios.post("http://localhost:5000/student/login",values)
+        .then((res)=>{
+            if(res.data.msg){
+                swal("Login Failed","Incorrect email/password","error")
+                clickedSubmit(false);
+            }
+            else{
+                setTimeout(() => {
+                    swal("Login Successful", "Redirecting you to your account...", "success", {
+                        button: false
+                    });
+                    clickedSubmit(false);
+                }, 500);
+                setTimeout(() => {
+                    swal.close()
+                    dispatch({ type: AUTH, data:res.data.student ,user:'student'});
+                    history.push("/dashboard")
+                },2000);
+            }
+        })
+       
     }
 
     useEffect(() => {
@@ -161,6 +179,7 @@ const StudentLogin = (props) => {
                     <Button 
                         bgGradient="linear(to-br, #543B99, #44337A)"
                         isLoading
+                        w="280px"
                         loadingText="Logging in"
                         _hover={{ bgGradient:"linear(to-br, #44337A, #543B99)" }}
                     />
