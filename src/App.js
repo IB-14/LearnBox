@@ -1,6 +1,8 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import FacultyLogin from "./Views/Login/facultyLogin.jsx"
 import StudentLogin from "./Views/Login/studentLogin.jsx";
+import PrivateRoute from "./Routes/PrivateRoute.jsx";
+import { Dashboard } from "./Views/Dashboard/dashboard.jsx";
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/student-login">
             <StudentLogin />
           </Route>
+
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
         </Switch>
 
