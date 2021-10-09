@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Flex, 
     Stack, 
     Box,
-    Center,
     Text,
     Input,
     InputGroup,
@@ -62,9 +61,19 @@ const initialValues= {
 
 const FacultyLogin = (props) => {
 
+    const student = JSON.parse(localStorage.getItem('student'));
+    const teacher = JSON.parse(localStorage.getItem('teacher'));
+
     const dispatch=useDispatch();
     const history = useHistory();
     const axios=require("axios");
+
+    if(student || teacher) {
+        if(student)
+            history.push("/student-dashboard")
+        if(teacher)
+            history.push("/faculty-dashboard")
+    }
 
     const [vantaEffect, setVantaEffect] = useState(0)
     const myRef = useRef(null)
@@ -97,7 +106,7 @@ const FacultyLogin = (props) => {
                 setTimeout(() => {
                     swal.close()
                     dispatch({ type: AUTH, data:res.data.teacher ,user:'teacher'});
-                    history.push("/dashboard")
+                    history.push("/faculty-dashboard")
                 },2000);
             }
         })
@@ -139,7 +148,7 @@ const FacultyLogin = (props) => {
         <Flex ref={myRef} justify="center" align="center" h="100vh" overflow="hidden">
                 
             <Box pos="absolute" top="30px" left="50px">
-                <img src={process.env.PUBLIC_URL + '/SVGs/Logo.svg'} style={{height:"50px"}} />
+                <img src={process.env.PUBLIC_URL + '/SVGs/Logo.svg'} style={{height:"50px"}} alt="bg" />
             </Box>
             
             <Stack px={6} py={8} bgColor="#ffffff" spacing={14} justify="center" align="center" borderRadius="10px">

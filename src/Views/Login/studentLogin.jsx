@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Flex, 
     Stack, 
     Box,
-    Center,
     Text,
     Input,
     InputGroup,
@@ -33,7 +32,7 @@ const InputText = ({ label, ...props }) => {
                  {...field}
                  {...props}
          />
-         <FormErrorMessage fontWeight="bold" maxW="280px">{meta.error}</FormErrorMessage>
+         <FormErrorMessage fontWeight="semibold" maxW="280px">{meta.error}</FormErrorMessage>
        </FormControl>
      );
    };
@@ -58,9 +57,20 @@ const initialValues= {
 
 
 const StudentLogin = (props) => {
+
+    const student = JSON.parse(localStorage.getItem('student'));
+    const teacher = JSON.parse(localStorage.getItem('teacher'));
+
     const dispatch=useDispatch();
     const history = useHistory();
     const axios=require("axios");
+
+    if(student || teacher) {
+        if(student)
+            history.push("/student-dashboard")
+        if(teacher)
+            history.push("/faculty-dashboard")
+    }
 
     const [vantaEffect, setVantaEffect] = useState(0)
     const myRef = useRef(null)
@@ -93,7 +103,7 @@ const StudentLogin = (props) => {
                 setTimeout(() => {
                     swal.close()
                     dispatch({ type: AUTH, data:res.data.student ,user:'student'});
-                    history.push("/dashboard")
+                    history.push("/student-dashboard")
                 },2000);
             }
         })
@@ -136,7 +146,7 @@ const StudentLogin = (props) => {
         <Flex ref={myRef} justify="center" align="center" h="100vh" overflow="hidden">
             
             <Box pos="absolute" top="30px" left="50px">
-                <img src={process.env.PUBLIC_URL + '/SVGs/Logo.svg'} style={{height:"50px"}} />
+                <img src={process.env.PUBLIC_URL + '/SVGs/Logo.svg'} style={{height:"50px"}} alt="bg" />
             </Box>
             
             <Stack px={4} py={8} bgColor="#ffffff" spacing={14} justify="center" align="center" borderRadius="10px">
