@@ -5,12 +5,16 @@ import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import StudentDashboard from "./Views/Dashboard/studentDashboard.jsx";
 import FacultyDashboard from "./Views/Dashboard/facultyDashboard.jsx";
 import Classroom from "./Views/Dashboard/Classroom/Classroom.jsx";
+import StudentClassroom from "./Views/Dashboard/Classroom/StudentClassroom.jsx";
+import Container from "./Components/Whiteboard/Container/Container.jsx";
+import Attendance from "./Components/Attendance.jsx";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
+
 
 function App() {
   return (
@@ -34,6 +38,10 @@ function App() {
           <PrivateRoute exact path="/student-dashboard" component={StudentDashboard} />
           <PrivateRoute exact path="/faculty-dashboard" component={FacultyDashboard} />
           <PrivateRoute exact path="/:id/classroom" component={Classroom} />
+          <PrivateRoute exact path="/:id/s_classroom" component={StudentClassroom} />
+          <PrivateRoute exact path="/board" component={Container} />
+          <PrivateRoute exact path="/attendance" component={Attendance} />
+
 
         </Switch>
 

@@ -11,7 +11,7 @@ const io = require('socket.io')(http);
 const mongo=require("./mongo")
 const config = require("./zoom/config");
 
-
+const Team=require("./models/team")
 
 //working with POST and PUT requests
 app.use(express.json()) //recognize incoming request as a JSON object
@@ -83,7 +83,18 @@ app.post("/meeting", (req, res) => {
     });
 });
 
+app.post("/newMeeting",async (req,res)=>{
+  const team_id=req.body.id;
+  const url=req.body.url;
 
+  const update= await Team.updateOne({Team_ID:team_id},[{$set:{Link:url}}])
+})
+
+app.post("/getURL",async(req,res)=>{
+  const id=req.body.id;
+  const link=await Team.findOne({Team_ID:id});
+  res.json({link:link.Link});
+})
 
 
 const PORT=process.env.PORT||5000;
