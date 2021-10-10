@@ -51,10 +51,6 @@ npm i
 npm run start
 ```
 
-## Screens
-
-
-
 ## Technologies Used
 
 We have used MERN stack in our web app:
