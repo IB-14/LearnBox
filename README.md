@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# LearnBox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We aim to build a web application for solving the problems students are facing in virtual classes and to bridge classroom learning and virtual learning. We decided to choose Education as the track for our hack project because of it’s crucial presence and practicality during today’s time of pandemic. Our web-app LearnBox is an education platform for bringing physical classes to virtual mode with an interactive experience for students and teachers. Teachers will be able to conduct classes via zoom meetings and will not have to worry about student’s presence. Student’s attendance will be done by facial detection to ensure student is present in class.
 
-## Available Scripts
+Gamification has been introduced to keep students engaged with the portal and earn points. Students will be given assignments on daily basis which will be the basis of the leaderboard.
 
-In the project directory, you can run:
+## Problem Statement: 
 
-### `yarn start`
+The problem statements under Education track challenge us with the following questions:
+- How can we replace the human connection lost through social distancing?
+- Create a progressive web app which can make virtual classes more interactive.
+- Apps that aid college students.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+With the onset of the pandemic, education has gone through a drastic change, where institutions are striving towards providing uninterrupted learning for their students.
+- Our portal will make a significant and positive impact on students and teachers.
+- By integrating all the tasks related to teaching and assessments in our web app, miscommunication and misunderstandings will be reduced, and a seamless communication will be established between the student and teacher.
+- Further on, to give a feel of physical classes and catch the attention of students, we have added quizzes for everyday points and strict attendance feature.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Start Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run the react app: 
 
-### `yarn build`
+```
+git clone https://github.com/IB-14/LearnBox.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Client Side:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+cd LearnBox
+npm i
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Server Side:
 
-### `yarn eject`
+```
+cd LearnBox
+cd server
+npm i
+nodemon index.js
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Zoom SDK:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+cd zoom-sdk-web-1.9.9
+cd Local
+npm i
+npm run start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Screens
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies Used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We have used MERN stack in our web app:
+MERN Stack is a Javascript Stack that is used for easier and faster deployment of full-stack web applications. MERN Stack comprises of 4 technologies namely: MongoDB, Express, React and Node.js. It is designed to make the development process smoother and easier.
+- MongoDB - document database
+- Express(.js) - Node.js web framework
+- React(.js) - a client-side JavaScript framework
+- Node(.js) - the premier JavaScript web server
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Innovation 
 
-### Analyzing the Bundle Size
+Our innovation in this project is:
+- When the class session is going on, facial recognition will be enabled, which means that student will only be given attendance if they are present throughout the class.
+- We have also added a reward /ranking system for students in each of their classes and overall aspect. This will bring about a healthy competition and learning environment among students.
+- A collaborative whiteboard to brainstorm group projects or take notes of class.
+- Unique badges allotted to students by teachers which will show on their profile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Feasibility 
 
-### Making a Progressive Web App
+- Since we have developed a prototype in this hackathon, we believe that our project is certainly feasible as it has a smooth workflow and proper error handling mechanisms.
+- Authentication and authorization is done with JWT and Formik, video calls are carried out with zoom meeting API so that the student can freely use whiteboard features and be monitored throughout the class.
+- There are additional features which we has brainstormed(included in future scope), ans we believe these features will make the web app more reliable and feasible to be used as a product by schools and colleges.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Future Prospects
 
-### Advanced Configuration
+There are many future prospects of our current project such as:
+- Facial detection can be further improved to facial recognition, this will certainly be a big turn over as compared to traditional attendance forms and will encourage students to attend classes.
+- Detailed analysis of the meeting(such as how much time was taken for doubt-clearing, exam discussion,etc). This will be a very useful feature for the parents.
+- Text to speech recognition can be integrated along with a language translate option so that students are comfortable in learning the curriculum.
+- Many students do not have a stable internet connection, so the application needs to be light-weight and function in low internet bandwidth.
+- The platform can also detect tab switch, whenever the student is getting distracted and opening another tab, the teacher can be alerted.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<table>
+	<tr align="center">
+    <td>
+      <b>Ishan Bhardwaj</b>
+		<p align="center">
+			<img src = "https://avatars.githubusercontent.com/u/59660334?v=4" width="150" height="150" alt="Your Name Here (Insert Your Image Link In Src">
+		</p>
+			<p align="center">
+				<a href = "https://github.com/IB-14">
+					<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/>
+				</a>
+				<a href = "hhttps://www.linkedin.com/in/ishan-bhardwaj-b080b21a1/">
+					<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
+				</a>
+			</p>
+		</td>
+		<td>
+      <b>Abeer Aftab</b>
+		<p align="center">
+			<img src = "https://avatars.githubusercontent.com/u/54543768?v=4" width="150" height="150" alt="Your Name Here (Insert Your Image Link In Src">
+		</p>
+			<p align="center">
+				<a href = "https://github.com/abeeraftab123">
+					<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/>
+				</a>
+				<a href = "https://www.linkedin.com/in/abeer-aftab-00274719a/">
+					<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
+				</a>
+			</p>
+		</td>
+    <td>
+      <b>Yashi Shukla</b>
+		<p align="center">
+			<img src = "https://avatars.githubusercontent.com/u/59660649?v=4" width="150" height="150" alt="Your Name Here (Insert Your Image Link In Src">
+		</p>
+			<p align="center">
+				<a href = "https://github.com/yashi4001">
+					<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/>
+				</a>
+				<a href = "https://www.linkedin.com/in/yashi-shukla-a4b81a1a9/">
+					<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
+				</a>
+			</p>
+		</td>
+ 
+</table>
