@@ -5,7 +5,11 @@ import Navbar from '../../Components/Navbar';
 import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
+
+
 const ClassCard =() => {
+    const history = useHistory();
+    const redirect=()=>{history.push("/CSE3002/s_classroom")}
     return (
         <Stack spacing={4} 
                align="center" 
@@ -19,7 +23,7 @@ const ClassCard =() => {
                borderBottom="#4299E1 10px solid"
                cursor="pointer"
                >
-            <Box as="span">Artificial Intelligence</Box>
+            <Box as="span" onClick={redirect}>Artificial Intelligence</Box>
             <Box as="span">CSE-3002</Box>
         </Stack>
     )
@@ -43,9 +47,7 @@ const StudentDashboard = (props) => {
                     <Navbar />
 
                     <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-                        <ClassCard onClick={()=> {
-                          history.push('/:id/classroom');
-                        }} />
+                        <ClassCard />
                         <ClassCard />
                         <ClassCard />
                         <ClassCard />

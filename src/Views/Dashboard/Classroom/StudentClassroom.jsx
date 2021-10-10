@@ -5,39 +5,40 @@ import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../../../Components/Sidebar';
 import { useState } from 'react';
+import swal from '@sweetalert/with-react';
 
-const Classroom = (props) => {
+const StudentClassroom = (props) => {
 
     const dispatch=useDispatch();
     const axios=require('axios');
     const history = useHistory();
     const [view, setView] = useState("dashboard");
 
+    const joinMeeting=async ()=>{
+        const data={
+            id:"CSE-3002"
+        }
+        const url=await axios.post("http://localhost:5000/getURL",data);
+        if(url.data.link.length>0){
+            window.location.replace(`${url.data.link}`);
+        } else{
+            swal("Meeting not started","Meeting has not been started by teacher","error")
+        }
+    }
+
     const logout = () => {
         dispatch({ type: LOGOUT,user:"student" });
         history.push('/');
     }
 
-    const name= JSON.parse(localStorage.getItem('student')) ? JSON.parse(localStorage.getItem('student')).email : JSON.parse(localStorage.getItem('teacher')).email;
-    const username="Yashi";
-    const launchMeeting=async()=>{
-        const result=await axios.post("http://localhost:5000/meeting");
-        const url=result.data.join_url.replaceAll(
-            "https://us05web.zoom.us/j/",
-            "http://localhost:9999/?"
-        ) + `?role=1?name=${username}`;
-
-        const data={
-            url:url,
-            id:"CSE-3002"
-        }
-        window.location.replace(`${url}`);
-        const res=await axios.post("http://localhost:5000/newMeeting",data);
-    }
     const board=()=>{
         history.push("/board");
     }
-    
+
+    const name= JSON.parse(localStorage.getItem('student')) ? JSON.parse(localStorage.getItem('student')).email : JSON.parse(localStorage.getItem('teacher')).email;
+
+
+
     return (
         <Flex w="100vw" minH="100vh">
 
@@ -49,11 +50,11 @@ const Classroom = (props) => {
     
                                         <Flex w="100%" justify="space-between" h="min-content" color="#494482">
 
-                                        <Box as="span" w="40%" borderRadius="10px" color="white" fontWeight="medium"  py="8px" textAlign="center" bgGradient="linear(to-br, #526EBF, #815DC9)" alignItems="center" justifyContent="center">
+                                            <Box as="span" w="40%" borderRadius="10px" color="white" fontWeight="medium"  py="8px" textAlign="center" bgGradient="linear(to-br, #526EBF, #815DC9)" alignItems="center" justifyContent="center">
                                                 Artificial Intelligence CSE-3002
                                             </Box>
 
-                                            
+                                           
 
                                             <Spacer />
 
@@ -72,11 +73,12 @@ const Classroom = (props) => {
                                             border="1px solid"
                                             borderRadius="10px"
                                         >
-                                            {
-                                                localStorage.getItem('teacher')?<Button onClick={launchMeeting}>Create Meeting</Button>:null
+                                            {   
+                                                localStorage.getItem('student')?<><Button onClick={joinMeeting}>Join Meeting</Button></>:null
                                             }
                                             <Button onClick={board}>Whiteboard</Button>
                                         </Flex>
+
 
                 </Stack>
 
@@ -86,4 +88,4 @@ const Classroom = (props) => {
     );
 }
 
-export default Classroom;
+export default StudentClassroom;

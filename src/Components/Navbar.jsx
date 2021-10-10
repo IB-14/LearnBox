@@ -11,11 +11,12 @@ function Navbar(props) {
     const history = useHistory();
 
     const logout = () => {
-        dispatch({ type: LOGOUT,user:"student" });
+        if(JSON.parse(localStorage.getItem('student'))) dispatch({ type: LOGOUT,user:"student" });
+        else if(JSON.parse(localStorage.getItem('teacher'))) dispatch({ type: LOGOUT,user:"teacher" });
         history.push('/');
     }
 
-    const name= JSON.parse(localStorage.getItem('student')).email
+    const name= JSON.parse(localStorage.getItem('student')) ? JSON.parse(localStorage.getItem('student')).email : JSON.parse(localStorage.getItem('teacher')).email;
     return (
         <Flex w="100%" justify="space-between" h="min-content" color="#494482">
 
